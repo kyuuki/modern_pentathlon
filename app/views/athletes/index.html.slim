@@ -1,0 +1,25 @@
+.row
+  .col
+    h1.my-5 近代五種 選手一覧
+
+    table.table.table-bordered.table-striped
+      thead.thead-dark
+        tr
+          th 名前
+          th 性別
+          th 生年月日
+          th コメント
+          th
+      tbody
+        - @athletes.each do |athlete|
+          tr
+            td = link_to athlete.name, athlete
+            td = athlete.view_sex
+            td = athlete.birth_date
+            td = athlete.note
+            td
+              = link_to '編集', edit_athlete_path(athlete), { class: "btn btn-primary btn-sm" }
+              | &nbsp;
+              = link_to '削除', athlete, data: { confirm: 'Are you sure?' }, method: :delete, class: "btn btn-primary btn-sm"
+
+    = link_to '新規登録', new_athlete_path, { class: "btn btn-primary" }

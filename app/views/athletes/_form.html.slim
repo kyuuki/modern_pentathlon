@@ -1,0 +1,28 @@
+= form_for @athlete do |f|
+  - if @athlete.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@athlete.errors.count, "error")} prohibited this athlete from being saved:"
+      ul
+        - @athlete.errors.full_messages.each do |message|
+          li = message
+
+  .form-group.row
+    = f.label :name, "名前", { class: "col-sm-2 col-form-label" }
+    .col-sm-6
+      = f.text_field :name, class: "form-control"
+  .form-group.row
+    = f.label :sex, "性別", { class: "col-sm-2 col-form-label" }
+    .col-sm-6
+      = f.number_field :sex, class: "form-control"
+  .form-group.row
+    = f.label :birth_date, "生年月日", { class: "col-sm-2 col-form-label" }
+    .col-sm-6
+      = f.date_field :birth_date, class: "form-control"
+  .form-group.row
+    = f.label :note, "備考", { class: "col-sm-2 col-form-label" }
+    .col-sm-6
+      = f.text_area :note, size: "100x5", class: "form-control"
+      
+  .form-group.row
+    .col-sm-10.offset-sm-2
+      .actions = f.submit "更新", { class: "btn btn-danger" }

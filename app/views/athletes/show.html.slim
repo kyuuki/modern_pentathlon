@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @athlete.name
+p
+  strong Sex:
+  = @athlete.sex
+p
+  strong 生年月日:
+  = @athlete.birth_date
+p
+  strong Note:
+  = @athlete.note
+
+=> link_to 'Edit', edit_athlete_path(@athlete)
+'|
+=< link_to 'Back', athletes_path
